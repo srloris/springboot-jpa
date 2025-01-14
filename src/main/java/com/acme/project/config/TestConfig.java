@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.acme.project.entities.Category;
 import com.acme.project.entities.Order;
 import com.acme.project.entities.OrderItem;
+import com.acme.project.entities.Payment;
 import com.acme.project.entities.Product;
 import com.acme.project.entities.User;
 import com.acme.project.entities.enums.OrderStatus;
@@ -65,7 +66,7 @@ public class TestConfig implements CommandLineRunner {
 		
 		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 		
-		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.WAITING_PAYMENT, u1);
+		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1);
 		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2);
 		Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u1);
 		
@@ -76,7 +77,12 @@ public class TestConfig implements CommandLineRunner {
 		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		
-		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));		
+		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+		
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);
 	}
 		
 }
