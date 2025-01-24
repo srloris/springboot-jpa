@@ -125,4 +125,4 @@ Para mais informações, entre em contato:
 
 - Nome: Lorenzo Bastos Nunez
 - Email: lorenzobnunez@hotmail.com
-- LinkedIn: [Seu Perfil](https://www.linkedin.com/in/lorenzo-bastos-nunez/)
+- LinkedIn: [Lorenzo Nunez](https://www.linkedin.com/in/lorenzo-bastos-nunez/)
